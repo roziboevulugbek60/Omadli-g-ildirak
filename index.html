@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMAD G‘ILDIRAGI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-glow glow-one"></div>
+  <div class="background-glow glow-two"></div>
+
+  <header class="topbar">
+    <a class="logo" href="#">🎡 <span>OMAD</span> G‘ILDIRAGI</a>
+    <div class="top-stats">
+      <div class="top-stat">⭐ <span id="topScore">0</span></div>
+      <div class="top-stat">🏆 <span id="topRecord">0</span></div>
+      <button class="sound-button" id="soundBtn" title="Ovozni yoqish/o‘chirish">🔊</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-tag">✨ OMADINGIZNI SINAB KO‘RING</div>
+      <h1>OMAD <span>G‘ILDIRAGI</span></h1>
+      <p>G‘ildirakni aylantiring va ajoyib sovg‘alarni qo‘lga kiriting!</p>
+    </section>
+
+    <section class="game-layout">
+      <div class="wheel-card">
+        <div class="wheel-info">
+          <div>
+            <span class="small-label">SIZNING BALLINGIZ</span>
+            <div class="big-number" id="score">0</div>
+          </div>
+          <div class="level-box">
+            <span class="small-label">BOSQICH</span>
+            <strong id="level">1</strong>
+          </div>
+        </div>
+
+        <div class="wheel-area">
+          <div class="wheel-shadow"></div>
+          <div class="pointer">▼</div>
+          <div class="wheel" id="wheel">
+            <div class="wheel-labels" id="wheelLabels"></div>
+            <div class="wheel-center">
+              <span>🎡</span>
+              <small>OMAD</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="wheel-controls">
+          <button class="spin-button" id="spinBtn">
+            <span>🎯</span> AYLANISH
+          </button>
+          <button class="reset-button" id="resetBtn" title="O‘yinni qayta boshlash">↻</button>
+        </div>
+        <p class="spin-note" id="spinNote">Tugmani bosing va omadni sinab ko‘ring!</p>
+
+        <div class="result-box" id="resultBox">
+          <span id="resultEmoji">🎁</span>
+          <div>
+            <strong id="resultTitle">Omad sizga kulib boqdi!</strong>
+            <p id="resultText">Sovg‘angiz shu yerda ko‘rinadi.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side-panel">
+        <div class="panel-card">
+          <h3>🎨 G‘ildirak ranglari</h3>
+          <p class="muted">O‘zingizga yoqqan rang uslubini tanlang.</p>
+          <div class="theme-buttons">
+            <button class="theme-btn active" data-theme="purple">💜 Binafsha</button>
+            <button class="theme-btn" data-theme="ocean">🌊 Okean</button>
+            <button class="theme-btn" data-theme="sunset">🌅 Quyosh</button>
+            <button class="theme-btn" data-theme="forest">🌿 Tabiat</button>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <h3>➕ O‘z bo‘limingizni qo‘shing</h3>
+          <p class="muted">G‘ildirakka yangi sovg‘a yoki bo‘lim kiriting.</p>
+          <form id="addForm" class="add-form">
+            <input id="newItem" type="text" maxlength="22" placeholder="Masalan: 100 ball" required>
+            <button type="submit">Qo‘shish</button>
+          </form>
+          <div class="sections-list" id="sectionsList"></div>
+        </div>
+
+        <div class="panel-card">
+          <h3>🎯 Kunlik topshiriq</h3>
+          <div class="mission">
+            <div class="mission-icon">🎡</div>
+            <div class="mission-content">
+              <strong>3 marta aylantiring</strong>
+              <p><span id="dailyProgress">0</span>/3 bajarildi</p>
+              <div class="progress-track"><div id="dailyBar"></div></div>
+            </div>
+          </div>
+          <div class="mission-reward">Mukofot: ⭐ +30 ball</div>
+          <p class="mission-status" id="missionStatus">Topshiriqni bajaring!</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="dashboard">
+      <div class="stat-card">
+        <div class="stat-icon">⭐</div>
+        <div><span>Jami ball</span><strong id="totalScore">0</strong></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏆</div>
+        <div><span>Rekord</span><strong id="record">0</strong></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎡</div>
+        <div><span>Aylanishlar</span><strong id="spinCount">0</strong></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎁</div>
+        <div><span>Sovg‘alar</span><strong id="giftCount">0</strong></div>
+      </div>
+    </section>
+
+    <section class="bottom-grid">
+      <div class="panel-card history-card">
+        <div class="section-heading">
+          <h3>📜 Aylanishlar tarixi</h3>
+          <button class="text-button" id="clearHistory">Tozalash</button>
+        </div>
+        <div id="historyList" class="history-list">
+          <p class="empty-text">Hali aylanishlar mavjud emas.</p>
+        </div>
+      </div>
+
+      <div class="panel-card rewards-card">
+        <h3>🏅 Sovg‘alar va bosqichlar</h3>
+        <div class="level-progress">
+          <div class="level-row">
+            <span>Keyingi bosqich</span>
+            <strong id="nextLevel">2-bosqich</strong>
+          </div>
+          <div class="progress-track"><div id="levelBar"></div></div>
+          <p class="muted" id="levelText">Keyingi bosqichga 100 ball qoldi.</p>
+        </div>
+        <div class="reward-list" id="rewardList">
+          <div class="reward-item"><span>🥉</span><div><strong>Birinchi qadam</strong><small>1 marta aylantiring</small></div><b id="rewardOne">🔒</b></div>
+          <div class="reward-item"><span>🥈</span><div><strong>Omadli o‘yinchi</strong><small>10 marta aylantiring</small></div><b id="rewardTwo">🔒</b></div>
+          <div class="reward-item"><span>🥇</span><div><strong>Omad ustasi</strong><small>25 marta aylantiring</small></div><b id="rewardThree">🔒</b></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2026 OMAD G‘ILDIRAGI · <strong>Ulug'bek Ro'ziboev</strong></footer>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
