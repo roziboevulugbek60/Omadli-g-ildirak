@@ -1,0 +1,1 @@
+# Omadli-g-ildirak
